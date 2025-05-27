@@ -10,38 +10,37 @@
     <script type="text/javascript" src="./escrowABI.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.0/ethers.umd.min.js" type="application/javascript"></script>
 </head>
-<body  onload="checkWallet()" class= "bg-light">
-    <div class = "container my-5">
-    <div class = "card shadow p-4">
-    </div>
- 
-    <h1>My Escrow Page</h1>
-    <hr>
     
-    <!----->
-    <section id="walletInfo">
-        <br><br>
-        <b>Wallet connection: </b><br>
-        <span id="walletStatus" style="color:red">Checking for a wallet connection...</span>
-        <button onclick="checkWallet()" id="walletButton">Connect wallet</button>    
-      </section>
-      <!----->
-
-      <h3>Status: <span id="responseMessage" style="color:blue"></span></h3>
-
+<body  onload="checkWallet()" class= "bg-light">
+    <div class = "container my-5">      
+  
+<h1 class = "mb-4 text-center">ECC Escrow</h1>
+      
+     <hr>
+        <!----->
+        <section id="walletInfo">
+            <br><br>
+            <b>Wallet connection: </b><br>
+            <span id="walletStatus" style="color:red">Checking for a wallet connection...</span>
+            <button onclick="checkWallet()" id="walletButton">Connect wallet</button>    
+          </section>
+          <!----->
+    
+          <h3>Status: <span id="responseMessage" style="color:blue"></span></h3>
     <hr>
+        
     <div class="section" id="sectionClose">
-        <h2>Open escrow</h2>
-        Before you open an escrow account, you must approve the funds transfer from your wallet.<br>
-        <label for="amount">Amount</label>
+        <h2>Open Escrow</h2>
+        Approve transfer from you wallter before opening escrow<br>
+        <label for="amount" class="form-label">Amount</label>
         <input type="number" id="amount" name="amount" min="1"><br>
         <button id="approveButton" onclick="approveButton()">Approve Token Transfer</button><br>
 
-        <label for="sellerAddress">Seller address</label>
+        <label for="sellerAddress" class="form-label">Seller address</label>
         <input type="text" id="sellerAddress" name="sellerAddress"><br>
         <label for="mediatorAddress">Mediator address</label>
         <input type="text" id="mediatorAddress" name="mediatorAddress"><br>
-        <button id="openButton"  onclick="openEscrow()" diabled>Open escrow</button>
+        <button id="openButton"  onclick="openEscrow()" diabled class = "btn btn-primary">Open escrow</button>
     </div>
     <hr>
     <div class="section" id="sectionClose">
