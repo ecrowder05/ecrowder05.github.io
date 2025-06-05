@@ -12,45 +12,159 @@
             font-family: 'Montserrat', sans-serif;
             color: #fff;
             padding-top: 60px;
+            min-height: 100vh;
         }
+
+        /* Professional bold header with background highlight */
+        .header-title {
+            font-weight: 900;
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            background: #17c3b2;
+            color: #0a0a0a;
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(23, 195, 178, 0.6);
+            margin-bottom: 10px;
+            user-select: none;
+        }
+
+        .lead-text {
+            font-weight: 500;
+            color: #a0e7d6;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 40px;
+            user-select: none;
+        }
+
         .card {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(23, 195, 178, 0.1); /* subtle teal tinted */
             border: none;
             border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: box-shadow 0.3s ease;
         }
+
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(23, 195, 178, 0.6);
+        }
+
         h1, h2, h3, h5 {
             font-weight: 700;
-            color: #ffffff;
+            color: #e0f7f4;
         }
+
         label {
-            color: #ddd;
+            color: #b2dfdb;
+            font-weight: 600;
         }
-        .btn-primary, .btn-outline-success, .btn-danger {
+
+        .btn-primary {
             width: 100%;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
+            background-color: #17c3b2;
+            border-color: #17c3b2;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
+        .btn-primary:hover {
+            background-color: #138a82;
+            border-color: #138a82;
+        }
+
+        .btn-outline-success {
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-color: #17c3b2;
+            color: #17c3b2;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-outline-success:hover {
+            background-color: #17c3b2;
+            color: #0a0a0a;
+        }
+
+        .btn-danger {
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: #f44336;
+            border-color: #f44336;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .btn-danger:hover {
+            background-color: #b71c1c;
+            border-color: #b71c1c;
+        }
+
         .form-control {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(23, 195, 178, 0.15);
             border: none;
-            color: #fff;
+            color: #e0f7f4;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .form-control:focus {
+            background-color: rgba(23, 195, 178, 0.3);
+            color: #0a0a0a;
+            outline: none;
+            box-shadow: 0 0 8px #17c3b2;
         }
         .form-control::placeholder {
-            color: #ccc;
+            color: #a0d6cc;
+            font-weight: 400;
         }
+
         .alert {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            background-color: rgba(23, 195, 178, 0.15);
+            color: #17c3b2;
             border: none;
+            font-weight: 600;
+            user-select: none;
+            min-height: 40px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
         }
+
+        #walletStatus {
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #17c3b2; /* teal */
+            user-select: none;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Layout changes */
+        .row.g-4 {
+            flex-direction: column; /* stack vertically */
+        }
+        .col-md-6 {
+            width: 100%;
+        }
+        .mb-4 {
+            margin-bottom: 2rem !important;
+        }
+
+        /* Make the connect wallet button smaller and subtle */
+        #walletButton {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
     </style>
 </head>
 <body onload="checkWallet()">
     <div class="container">
         <div class="text-center mb-5">
-            <h1>ECC Escrow Service</h1>
-            <p class="lead">Secure, Transparent Crypto Transactions</p>
+            <h1 class="header-title">ECC Escrow Service</h1>
+            <p class="lead-text">Secure, Transparent Crypto Transactions</p>
         </div>
 
         <div class="card p-4 mb-4">
@@ -67,7 +181,7 @@
 
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="card p-4">
+                <div class="card p-4 mb-4">
                     <h3 class="text-center mb-3">🚀 Open Escrow</h3>
                     <label for="amount">Amount</label>
                     <input type="number" id="amount" class="form-control mb-2" placeholder="Enter amount" min="1">
@@ -100,7 +214,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.0/ethers.umd.min.js"></script>
     <script src="./escrowABI.js"></script>
-    
 
     <script>
         // These vars will be used in multiple functions.
@@ -110,7 +223,6 @@
         var signer;
 
         async function checkWallet() {
-            
             // Get wallet addr
             var accountList = await ethereum.request({ method: 'eth_accounts' });
             myWallet = accountList[0] ;
@@ -119,11 +231,7 @@
             if (!myWallet) {
                 await window.ethereum.request({
                     method: "eth_requestAccounts", // This checks wallet connection
-                params: [
-                {
-                    eth_accounts: {}
-                }
-                ]
+                    params: [{ eth_accounts: {} }]
                 });
 
                 // Reload wallet address
@@ -131,14 +239,13 @@
                 myWallet = accountList[0] ;
             };
 
-            
             // Test again: If not connected to wallet, show a button to allow wallet connection.
             if (!myWallet) {
                 document.getElementById('walletStatus').innerHTML = "Click here to connect a crypto wallet: " ;
                 document.getElementById('walletButton').hidden = false ;
             } else {
                 document.getElementById('walletStatus').innerHTML = " &#x2713; Your crypto wallet is connected. <br>" ;
-                document.getElementById('walletStatus').style.color = "#0000FF" ;
+                document.getElementById('walletStatus').style.color = "#17c3b2" ;
                 document.getElementById("walletButton").hidden = true ;
             };
 
@@ -157,8 +264,8 @@
             console.log("buyer="+buyer);
             if (buyer=="0x0000000000000000000000000000000000000000") {
                 document.getElementById('responseMessage').innerHTML = "No funds in escrow." ;
-                document.getElementById('responseMessage').style.color = "blue" ;
-                document.getElementById('openButton').disabled = true; 
+                document.getElementById('responseMessage').style.color = "#17c3b2" ;
+                document.getElementById('openButton').disabled = false; 
                 document.getElementById('closeButton').disabled = true; 
                 document.getElementById('sellerAddress').disabled = true; 
                 document.getElementById('mediatorAddress').disabled = true; 
@@ -179,8 +286,8 @@
             try {
                 const tx = await tokenContract.approve(escrowContractAddress, approveAmt); 
                 const receipt = await tx.wait();
-                document.getElementById('responseMessage').innerHTML = "Funds transer approved." ;
-                document.getElementById('responseMessage').style.color = "blue" ;
+                document.getElementById('responseMessage').innerHTML = "Funds transfer approved." ;
+                document.getElementById('responseMessage').style.color = "#17c3b2" ;
                 document.getElementById('sellerAddress').disabled = false; 
                 document.getElementById('mediatorAddress').disabled = false; 
                 document.getElementById('openButton').disabled = false; 
@@ -190,9 +297,7 @@
                 console.error("Error approving token transfer:", error);
                 document.getElementById('responseMessage').innerText = `Error: ${error.message}`;
             }
-    
         } ;
-
 
         async function openEscrow() {
             document.getElementById('responseMessage').innerHTML = "Open account request sent." ;
@@ -214,7 +319,7 @@
                 const receipt = await tx.wait();
                 console.log(`Transaction successful with hash: ${receipt.transactionHash}`);
                 document.getElementById('responseMessage').innerHTML = "Escrow account opened." ;
-                document.getElementById('responseMessage').style.color = "blue" ;
+                document.getElementById('responseMessage').style.color = "#17c3b2" ;
                 document.getElementById('closeButton').disabled = false; 
                 document.getElementById('sellerAddress').disabled = true; 
                 document.getElementById('mediatorAddress').disabled = true; 
@@ -227,7 +332,6 @@
         }
 
         async function closeEscrow() {
-            
             document.getElementById('responseMessage').innerHTML = "Close account request sent." ;
             document.getElementById('responseMessage').style.color = "red" ;
             document.getElementById('closeButton').disabled = true; 
@@ -245,14 +349,13 @@
                 const receipt = await tx.wait();
                 console.log(`Transaction successful with hash: ${receipt.transactionHash}`);
                 document.getElementById('responseMessage').innerHTML = "Escrow account closed." ;
-                document.getElementById('responseMessage').style.color = "blue" ;
+                document.getElementById('responseMessage').style.color = "#17c3b2" ;
             } catch (error) {
                 console.error("Error calling escrowClose():", error);
                 document.getElementById('responseMessage').innerHTML = `Error: ${error.message}`;
             }
         }
     </script>
-
 
 </body>
 </html>
