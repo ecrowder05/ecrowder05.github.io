@@ -3,7 +3,7 @@
 const escrowContractAddress = '0xA199E8bDA4186C9812d55A50B7193C6DE6ddd549';
 
 // Set this address to the token you want to send to the escrow contract.
-const escrowTokenAddress = "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270";
+const escrowTokenAddress = "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"; 
 
 // Below are 2 ABIs you need to copy from Remix: the contract and the token.
 //	See the Loom video for instructions.
